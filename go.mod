@@ -1,4 +1,4 @@
-module github.com/{{.RepoOwner}}/{{.ProjectName}}
+module github.com/demotechinc/laszlo-crossplane-provider-github
 
 go 1.22.2
 

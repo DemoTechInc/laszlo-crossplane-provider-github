@@ -1,8 +1,8 @@
 version: 2
-project_name: {{.ImageName}}
+project_name: laszlo-crossplane-provider-github
 builds:
   - <<: &build_defaults
-      binary: {{.ImageName}}
+      binary: laszlo-crossplane-provider-github
       main: main.go
       env:
         - CGO_ENABLED=0
@@ -12,7 +12,7 @@ builds:
     goarch:
       - amd64
       - arm64
-{{`
+
 snapshot:
   version_template: "{{ .Env.CURRENT_TAG }}"
 archives:
@@ -24,10 +24,10 @@ archives:
       - none*
 dockers:
   - image_templates:
-`}}
-      - "{{.RegistryDomain}}/{{.RegistryName}}/{{.ImageName}}:{{`{{ .Env.CURRENT_TAG }}`}}-amd64"
-      - "{{.RegistryDomain}}/{{.RegistryName}}/{{.ImageName}}:latest-amd64"
-{{`
+
+      - "ghcr.io/demotechinc/laszlo-crossplane-provider-github:{{ .Env.CURRENT_TAG }}-amd64"
+      - "ghcr.io/demotechinc/laszlo-crossplane-provider-github:latest-amd64"
+
     dockerfile: Dockerfile
     use: buildx
     goos: linux
@@ -43,10 +43,10 @@ dockers:
     extra_files:
       - "templates"
   - image_templates:
-`}}
-      - "{{.RegistryDomain}}/{{.RegistryName}}/{{.ImageName}}:{{`{{ .Env.CURRENT_TAG }}`}}-arm64"
-      - "{{.RegistryDomain}}/{{.RegistryName}}/{{.ImageName}}:latest-arm64"
-{{`
+
+      - "ghcr.io/demotechinc/laszlo-crossplane-provider-github:{{ .Env.CURRENT_TAG }}-arm64"
+      - "ghcr.io/demotechinc/laszlo-crossplane-provider-github:latest-arm64"
+
     dockerfile: Dockerfile
     use: buildx
     goos: linux
@@ -62,16 +62,16 @@ dockers:
     extra_files:
       - "templates"
 docker_manifests:
-`}}
-  - name_template: "{{.RegistryDomain}}/{{.RegistryName}}/{{.ImageName}}:{{`{{ .Env.CURRENT_TAG }}`}}"
+
+  - name_template: "ghcr.io/demotechinc/laszlo-crossplane-provider-github:{{ .Env.CURRENT_TAG }}"
     image_templates:
-      - "{{.RegistryDomain}}/{{.RegistryName}}/{{.ImageName}}:{{`{{ .Env.CURRENT_TAG }}`}}-amd64"
-      - "{{.RegistryDomain}}/{{.RegistryName}}/{{.ImageName}}:{{`{{ .Env.CURRENT_TAG }}`}}-arm64"
-  - name_template: "{{.RegistryDomain}}/{{.RegistryName}}/{{.ImageName}}:latest"
+      - "ghcr.io/demotechinc/laszlo-crossplane-provider-github:{{ .Env.CURRENT_TAG }}-amd64"
+      - "ghcr.io/demotechinc/laszlo-crossplane-provider-github:{{ .Env.CURRENT_TAG }}-arm64"
+  - name_template: "ghcr.io/demotechinc/laszlo-crossplane-provider-github:latest"
     image_templates:
-      - "{{.RegistryDomain}}/{{.RegistryName}}/{{.ImageName}}:latest-amd64"
-      - "{{.RegistryDomain}}/{{.RegistryName}}/{{.ImageName}}:latest-arm64"
-{{`
+      - "ghcr.io/demotechinc/laszlo-crossplane-provider-github:latest-amd64"
+      - "ghcr.io/demotechinc/laszlo-crossplane-provider-github:latest-arm64"
+
 docker_signs:
   - cmd: cosign
     env:
@@ -84,15 +84,15 @@ docker_signs:
     output: true
 source:
   enabled: true
-`}}
-  name_template: "{{ .ProjectName }}_{{`{{ .Env.CURRENT_TAG }}`}}_src"
+
+  name_template: "laszlo-crossplane-provider-github_{{ .Env.CURRENT_TAG }}_src"
 sboms:
   - artifacts: archive
   - id: source
     artifacts: source
     documents:
-      - "{{ .ProjectName }}_{{`{{ .Env.CURRENT_TAG }}`}}_sbom.spdx.json"
-{{`
+      - "laszlo-crossplane-provider-github_{{ .Env.CURRENT_TAG }}_sbom.spdx.json"
+
 release: {}
 checksum: {}
 signs:
@@ -119,4 +119,4 @@ changelog:
       order: 1
     - title: Others
       order: 999
-`}}
+

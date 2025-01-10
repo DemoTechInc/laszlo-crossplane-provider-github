@@ -1,6 +1,6 @@
-# {{.ProjectName}}
+# laszlo-crossplane-provider-github
 
-![validation and test result](https://github.com/{{.RepoOwner}}/{{.ProjectName}}/actions/workflows/validate-test.yaml/badge.svg?event=push)
+![validation and test result](https://github.com/demotechinc/laszlo-crossplane-provider-github/actions/workflows/validate-test.yaml/badge.svg?event=push)
 
 ## Intro
 

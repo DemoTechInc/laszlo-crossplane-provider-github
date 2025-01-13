@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: laszlo-crossplane-provider-github
+  description: A Golang service responding to HTTP requests.
+  annotations:
+    backstage.io/kubernetes-id: laszlo-crossplane-provider-github
+    backstage.io/source-location: url:https://github.com/demotechinc/laszlo-crossplane-provider-github
+    backstage.io/techdocs-ref: url:https://github.com/demotechinc/laszlo-crossplane-provider-github/tree/main
+    giantswarm.io/deployment-names: laszlo-crossplane-provider-github,laszlo-crossplane-provider-github-app
+    giantswarm.io/ingress-host: "laszlo-crossplane-provider-github.demotech-rds.awsprod.gigantic.io"
+    giantswarm.io/grafana-dashboard: "/d/cdyhcdr5hge0wa/demotech-web-application-vitals"
+    github.com/project-slug: demotechinc/laszlo-crossplane-provider-github
+spec:
+  type: service
+  lifecycle: exampleBackstageEntityLifecycle
+  owner: exampleBackstageEntityOwner
